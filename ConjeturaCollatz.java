@@ -18,6 +18,7 @@ public class ConjeturaCollatz {
         int iteracionMayor = 0;
         int iteracionMenor = 0;
         int numeroMayor = 0;
+        int numeroMenor = 0;
         for (int i = 0; i < numPresupuesto; i++) {
             System.out.print("Ingresa el valor del presupuesto [" + (i + 1) + "] = ");
             presupuestos[i] = scanner.nextInt();
@@ -38,17 +39,20 @@ public class ConjeturaCollatz {
         }
         System.out.print("\033[H\033[2J");
         System.out.flush();
+        iteracionMenor = iteraciones[0];
         for (int i = 0; i < numPresupuesto; i++) {
             System.out.printf("%d: %d iteraciones\n", presupuestosOriginales[i], iteraciones[i]);
             if (iteraciones[i] > iteracionMayor) {
                 iteracionMayor = iteraciones[i];
                 numeroMayor = presupuestosOriginales[i];
-            } else {
+            }
+            if (iteraciones[i] < iteracionMenor) {
                 iteracionMenor = iteraciones[i];
+                numeroMenor = presupuestosOriginales[i];
             }
         }
         System.out.printf("Máximo: %d con %d iteraciones\n", numeroMayor, iteracionMayor);
-        System.out.printf("Iteración menor: %d\n", iteracionMenor);
+        System.out.printf("Mínimo: %d con %d iteraciones\n", numeroMenor, iteracionMenor);
         scanner.close();
     }
 
